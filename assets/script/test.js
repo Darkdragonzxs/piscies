@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startTour() {
     const steps = [
-      { text: "Welcome to Pisces Search! We respect your privacy and do NOT steal or sell your data.", icon: '<i class="fas fa-user-shield"></i>' },
-      { text: "All searches are AI-powered, giving you smarter results instantly.", icon: '<i class="fas fa-robot"></i>' },
-      { text: "To search, type your query in the search bar above and press Enter. Try it now!", icon: '<img src="/assets/images/demo.png" style="width:120px; margin-top:20px; border-radius:8px;">' }
+      { text: "We respect your privacy.", icon: '<i class="fas fa-user-shield"></i>' },
+      { text: "AI-powered searches.", icon: '<i class="fas fa-robot"></i>' },
+      { text: "Type your query above.", icon: '<img src="/assets/images/demo.png" style="width:100%; max-width:400px; border-radius:12px;">' }
     ];
 
     let currentStep = 0;
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       left: '0',
       width: '100vw',
       height: '100vh',
-      background: 'rgba(15, 15, 15, 0.8)',
+      background: 'rgba(15, 15, 15, 0.85)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -29,14 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const box = document.createElement('div');
     Object.assign(box.style, {
       background: 'linear-gradient(145deg, #1a1a1a, #2b2b2b)',
-      padding: '30px 40px',
+      padding: '20px',
       borderRadius: '16px',
-      width: '500px',
+      width: '600px',
       maxWidth: '90%',
       textAlign: 'center',
       color: '#fff',
       fontFamily: 'Inter, Arial, sans-serif',
-      fontSize: '20px',
+      fontSize: '18px',
       boxShadow: '0 0 20px rgba(0,0,0,0.5)',
       position: 'relative',
       transition: 'transform 0.3s ease, opacity 0.3s ease'
@@ -46,13 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const stepText = document.createElement('div');
     stepText.innerText = steps[currentStep].text;
+    stepText.style.fontSize = '18px';
     stepText.style.marginBottom = '20px';
     stepText.style.transition = 'opacity 0.3s ease';
     box.appendChild(stepText);
 
     const stepIcon = document.createElement('div');
     stepIcon.innerHTML = steps[currentStep].icon;
-    stepIcon.style.fontSize = '60px'; // bigger FontAwesome icons
+    stepIcon.style.fontSize = '200px'; // make FontAwesome icons huge
     stepIcon.style.marginBottom = '30px';
     box.appendChild(stepIcon);
 
