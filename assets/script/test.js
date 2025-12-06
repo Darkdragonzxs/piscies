@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const stepIcon = document.createElement('div');
     stepIcon.innerHTML = steps[currentStep].icon;
-    stepIcon.style.fontSize = '200px'; // make FontAwesome icons huge
+    stepIcon.style.fontSize = '200px';
     stepIcon.style.marginBottom = '30px';
     box.appendChild(stepIcon);
 
@@ -109,6 +109,19 @@ document.addEventListener('DOMContentLoaded', () => {
         currentStep = step;
         stepText.innerText = steps[currentStep].text;
         stepIcon.innerHTML = steps[currentStep].icon;
+
+        const img = stepIcon.querySelector('img');
+        if (img) {
+          stepIcon.style.fontSize = '0';
+          stepIcon.style.marginBottom = '20px';
+          img.style.width = '100%';
+          img.style.maxWidth = '500px';
+          img.style.borderRadius = '12px';
+        } else {
+          stepIcon.style.fontSize = '200px';
+          stepIcon.style.marginBottom = '30px';
+        }
+
         stepText.style.opacity = '1';
         stepIcon.style.opacity = '1';
         prevBtn.disabled = currentStep === 0;
