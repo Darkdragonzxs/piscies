@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const steps = [
       { text: "We respect your privacy, and we don't steal your data.", icon: '<i class="fas fa-user-shield"></i>' },
       { text: "We use AI-powered searches, which give you on-point results.", icon: '<i class="fas fa-robot"></i>' },
-      { text: "Try using Pisces now, by exiting this and typing a query in the box.", icon: '<img src="/assets/images/demo.png" style="width:100%; max-width:400px; border-radius:12px;">' }
+      { text: "Try using Pisces now, by exiting this and typing a query in the box.", icon: '<img src="/assets/images/demo.png" style="width:100%; max-width:500px; border-radius:12px;">' }
     ];
 
     let currentStep = 0;
