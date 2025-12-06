@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const steps = [
       { text: "Welcome to Pisces Search! We respect your privacy and do NOT steal or sell your data.", icon: '<i class="fas fa-user-shield"></i>' },
       { text: "All searches are AI-powered, giving you smarter results instantly.", icon: '<i class="fas fa-robot"></i>' },
-      { text: "To search, type your query in the search bar above and press Enter. Try it now!", icon: '<img src="/assets/images/demo.png" style="width:80px; margin-top:15px; border-radius:8px;">' }
+      { text: "To search, type your query in the search bar above and press Enter. Try it now!", icon: '<img src="/assets/images/demo.png" style="width:120px; margin-top:20px; border-radius:8px;">' }
     ];
 
     let currentStep = 0;
@@ -46,13 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const stepText = document.createElement('div');
     stepText.innerText = steps[currentStep].text;
-    stepText.style.marginBottom = '15px';
+    stepText.style.marginBottom = '20px';
     stepText.style.transition = 'opacity 0.3s ease';
     box.appendChild(stepText);
 
     const stepIcon = document.createElement('div');
     stepIcon.innerHTML = steps[currentStep].icon;
-    stepIcon.style.fontSize = '40px';
+    stepIcon.style.fontSize = '60px'; // bigger FontAwesome icons
     stepIcon.style.marginBottom = '30px';
     box.appendChild(stepIcon);
 
