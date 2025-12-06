@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startTour() {
     const steps = [
-      "Welcome to Pisces Search! We respect your privacy and do NOT steal or sell your data.",
-      "All searches are AI-powered, giving you smarter results instantly.",
-      "To search, type your query in the search bar above and press Enter. Try it now!"
+      { text: "Welcome to Pisces Search! We respect your privacy and do NOT steal or sell your data.", icon: '<i class="fas fa-user-shield"></i>' },
+      { text: "All searches are AI-powered, giving you smarter results instantly.", icon: '<i class="fas fa-robot"></i>' },
+      { text: "To search, type your query in the search bar above and press Enter. Try it now!", icon: '<img src="/assets/images/demo.png" style="width:80px; margin-top:15px; border-radius:8px;">' }
     ];
 
     let currentStep = 0;
@@ -45,10 +45,16 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.appendChild(box);
 
     const stepText = document.createElement('div');
-    stepText.innerText = steps[currentStep];
-    stepText.style.marginBottom = '30px';
+    stepText.innerText = steps[currentStep].text;
+    stepText.style.marginBottom = '15px';
     stepText.style.transition = 'opacity 0.3s ease';
     box.appendChild(stepText);
+
+    const stepIcon = document.createElement('div');
+    stepIcon.innerHTML = steps[currentStep].icon;
+    stepIcon.style.fontSize = '40px';
+    stepIcon.style.marginBottom = '30px';
+    box.appendChild(stepIcon);
 
     const nav = document.createElement('div');
     nav.style.display = 'flex';
@@ -83,15 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
     box.appendChild(progress);
 
     prevBtn.addEventListener('click', () => {
-      if (currentStep > 0) {
-        changeStep(currentStep - 1);
-      }
+      if (currentStep > 0) changeStep(currentStep - 1);
     });
 
     nextBtn.addEventListener('click', () => {
-      if (currentStep < steps.length - 1) {
-        changeStep(currentStep + 1);
-      } else {
+      if (currentStep < steps.length - 1) changeStep(currentStep + 1);
+      else {
         overlay.style.opacity = '0';
         box.style.transform = 'scale(0.8)';
         setTimeout(() => overlay.remove(), 500);
@@ -100,10 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function changeStep(step) {
       stepText.style.opacity = '0';
+      stepIcon.style.opacity = '0';
       setTimeout(() => {
         currentStep = step;
-        stepText.innerText = steps[currentStep];
+        stepText.innerText = steps[currentStep].text;
+        stepIcon.innerHTML = steps[currentStep].icon;
         stepText.style.opacity = '1';
+        stepIcon.style.opacity = '1';
         prevBtn.disabled = currentStep === 0;
         progressFill.style.width = `${((currentStep + 1)/steps.length)*100}%`;
       }, 300);
