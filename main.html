@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pisces Search</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+  body {
+    background: #0f0f0f;
+    color: #e0e0e0;
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+
+  .logo-container {
+    font-size: 120px;
+    color: #aaa;
+  }
+
+  .logo-text {
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    background: linear-gradient(90deg, #bbb, #fff, #aaa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    transition: background 0.1s linear;
+  }
+
+  .search-container {
+    margin-top: 40px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(145deg, #2b2b2b, #1a1a1a);
+    border-radius: 30px;
+    border: 1px solid #555;
+    padding: 0 15px;
+  }
+
+  .search-container input {
+    flex: 1;
+    padding: 14px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #fff;
+    border-radius: 30px;
+  }
+
+  .search-container input:disabled {
+    cursor: not-allowed;
+  }
+
+  .search-container i {
+    color: #888;
+    font-size: 18px;
+    margin-left: 10px;
+  }
+
+  .cookie-notice {
+    position: fixed;
+    bottom: 20px;
+    background: linear-gradient(145deg, #2b2b2b, #1a1a1a);
+    color: #ccc;
+    padding: 12px 24px;
+    border-radius: 12px;
+    border: 1px solid #555;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .cookie-notice.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .cookie-notice button {
+    background: #444;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .cookie-notice button:hover {
+    background: #666;
+  }
+</style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <i class="fas fa-fish"></i>
+  </div>
+
+  <div class="logo-text" id="logoText">Pisces</div>
+
+  <div class="search-container">
+    <input type="text" placeholder="Search...">
+    <i class="fas fa-search"></i>
+  </div>
+
+  <div class="cookie-notice show" id="cookieNotice">
+    We use cookies to improve your experience.
+    <button id="cookieAccept">Accept</button>
+  </div>
+    
+<script src="https://cdn.jsdelivr.net/gh/Darkdragonzxs/piscies@refs/heads/main/assets/script/test.js"></script>
+
+<script>
+const logoText = document.getElementById('logoText');
+
+document.addEventListener('mousemove', e => {
+  const xPercent = e.clientX / window.innerWidth;
+  const yPercent = e.clientY / window.innerHeight;
+
+  const r = Math.floor(180 + 75 * xPercent);
+  const g = Math.floor(180 + 75 * yPercent);
+  const b = Math.floor(180 + 75 * ((xPercent + yPercent)/2));
+
+  logoText.style.backgroundImage = `linear-gradient(
+    90deg,
+    rgb(${r},${r},${b}),
+    rgb(${g},${g},${b}),
+    rgb(${b},${r},${g})
+  )`;
+});
+
+const cookieNotice = document.getElementById('cookieNotice');
+const cookieAccept = document.getElementById('cookieAccept');
+
+cookieNotice.classList.add('show');
+
+cookieAccept.addEventListener('click', () => {
+  cookieNotice.classList.remove('show');
+});
+</script>
+
+</body>
+</html>
